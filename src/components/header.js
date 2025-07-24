@@ -218,7 +218,7 @@ const Header = () => {
 
   return (
     <StyledHeader open={isMenuOpen} showBG={headerBG}>
-      <StyledNavTitleWrapper>
+      {/* <StyledNavTitleWrapper>
         <StyledHomeLink
           onClick={scrollToTop}
           style={{
@@ -234,7 +234,7 @@ const Header = () => {
             }}
           />
         </StyledHomeLink>
-      </StyledNavTitleWrapper>
+      </StyledNavTitleWrapper> */}
       <MenuToggle
         ref={button}
         open={isMenuOpen}
@@ -249,12 +249,12 @@ const Header = () => {
         <StyledButton type="button" onClick={toggleDarkMode}>
           {darkMode ? <Sun size={20} /> : <Moon size={20} />}
         </StyledButton>
-        <StyledTradeLink
+        {/* <StyledTradeLink
           target="_blank"
           href="https://play.google.com/store/apps/developer?id=Web2App.app"
         >
           Android App
-        </StyledTradeLink>
+        </StyledTradeLink> */}
       </StyledNav>
     </StyledHeader>
   );

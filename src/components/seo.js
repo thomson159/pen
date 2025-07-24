@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
 function SEO({ description, lang, title, path }) {
   const { site } = useStaticQuery(
@@ -17,30 +17,39 @@ function SEO({ description, lang, title, path }) {
         }
       }
     `
-  )
+  );
 
-  const metaDescription = description || site.siteMetadata.description
-  const uniTitle = 'Web2App.app'
+  const metaDescription = description || site.siteMetadata.description;
+  const uniTitle = "pen";
 
   return (
     <Helmet
       htmlAttributes={{
-        lang
+        lang,
       }}
       title={title}
-      titleTemplate={`${site.siteMetadata.title} | %s`}
+      // titleTemplate={`${site.siteMetadata.title} | %s`}
+      titleTemplate={`%s`}
     >
       <meta charSet="utf-8" />
       <html lang="en" />
       <meta name="title" content={title} />
       <meta name="description" content={metaDescription} />
       <meta name="keywords" content={title}></meta>
-      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FF007A" />
-      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#FF007A" />
+      <meta
+        name="theme-color"
+        media="(prefers-color-scheme: light)"
+        content="#FF007A"
+      />
+      <meta
+        name="theme-color"
+        media="(prefers-color-scheme: dark)"
+        content="#FF007A"
+      />
 
       <meta property="og:title" content={uniTitle} />
       <meta property="og:description" content={metaDescription} />
-      <meta property="og:type" content={'website'} />
+      <meta property="og:type" content={"website"} />
       <meta property="og:url" content={site.siteMetadata.siteUrl + path} />
       {/* <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/images/'}twitter-card.png`} /> */}
 
@@ -51,20 +60,20 @@ function SEO({ description, lang, title, path }) {
         rel="stylesheet"
       />
     </Helmet>
-  )
+  );
 }
 
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``
-}
+  description: ``,
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired
-}
+  title: PropTypes.string.isRequired,
+};
 
-export default SEO
+export default SEO;

@@ -98,6 +98,7 @@ export const StyledTradeButton = styled.button`
   background-color: ${({ theme }) => theme.textColor};
   text-decoration: none;
   color: white;
+  // color: black;
   border-radius: 12px;
   display: inline-block;
   font-weight: 500;
@@ -106,7 +107,7 @@ export const StyledTradeButton = styled.button`
   white-space: nowrap;
   border: 1px solid transparent;
   box-shadow: ${({ theme }) => theme.shadows.small};
-  background: linear-gradient(128.17deg, #bd00ff -14.78%, #ff1f8a 110.05%);
+  background: linear-gradient(128.17deg, #b8860b -14.78%, #ffe135 110.05%);
 
   :hover,
   :focus {
@@ -224,21 +225,20 @@ const StyledTradeLink = styled(Link)`
 const IndexPage = (props) => {
   return (
     <Layout path={props.location.pathname}>
-      <SEO
-        title="Home"
-        path={props.location.pathname}
-        description="Turn Website Into App"
-      />
+      <SEO title="Home" path={props.location.pathname} description="" />
       <BG />
       <StyledBody>
         <StyledMargin>
           <StyledItemRow style={{ marginBottom: "2rem" }}>
             <StyledItemColumn>
               <StyledBodyTitle>
-                <span style={{ fontWeight: 200 }}>Turn </span>
-                Web<span style={{ fontWeight: 200 }}>site In</span>to App
+                Symbol of transforming
+                <br />
+                weapons into words
+                {/* <span style={{ fontWeight: 200 }}>Turn </span>
+                Web<span style={{ fontWeight: 200 }}>site In</span>to App */}
               </StyledBodyTitle>
-              <form>
+              {/* <form>
                 <StyledBodySubTitle>
                   No account. No coding. Enter the website address.
                 </StyledBodySubTitle>
@@ -271,13 +271,13 @@ const IndexPage = (props) => {
                   Test how your website will work on the mobile app version by
                   downloading our app from the Google Play store.
                 </StyledInfoText>
-              </Button>
+              </Button> */}
             </StyledItemColumn>
           </StyledItemRow>
         </StyledMargin>
-        <EcosystemSection props={props} />
-        <DeveloperSection props={props} />
-        <FAQSection props={props} />
+        {/* <EcosystemSection props={props} /> */}
+        {/* <DeveloperSection props={props} /> */}
+        {/* <FAQSection props={props} /> */}
         <ContactSection props={props} />
       </StyledBody>
     </Layout>
@@ -605,65 +605,63 @@ const ContactSection = () => {
       <StyledItemRow style={{ marginBottom: "2rem" }}>
         <StyledItemColumn style={{ minWidth: "255px", width: "auto" }}>
           <StyledBodySubTitle>
-            Write to us by email{" "}
-            <span role="img" aria-label="img">
-              📨
-            </span>
+            Write to us by email
             <br />
             <StyledExternalLink
               style={{ fontSize: 18 }}
-              href={"mailto:contact@web2app.app"}
+              // href={"mailto:contact@web2app.app"}
             >
-              contact@web2app.app
+              contact@
             </StyledExternalLink>
           </StyledBodySubTitle>
         </StyledItemColumn>
         <StyledItemColumn>
-          <Button>
-            <StyledBodySubTitleZero>
-              <span style={{ color: status == "OK" ? "green" : "red" }}>
+          {/* <Button> */}
+          <StyledBodySubTitleZero>
+            <span style={{ color: status == "OK" ? "green" : "red" }}>
+              {" "}
+              {status == "OK" ? "Thank you for Your message!" : status}
+            </span>
+          </StyledBodySubTitleZero>
+          <form ref={form} onSubmit={sendEmail}>
+            <StyledInput
+              required={true}
+              type="email"
+              placeholder="Your email"
+              name="from_name"
+              autoComplete="off"
+            />
+            <StyledTextArea
+              name="message"
+              required={true}
+              type="text"
+              rows={5}
+              placeholder="Your message"
+            />
+            {/* <input required={true} type="checkbox" />
+            <span
+              style={{
+                fontSize: 15,
+                marginLeft: 8,
+                marginRight: 8,
+                marginBottom: 10,
+              }}
+            >
+              Accept the{" "}
+              <a target="_black" href="/privacy">
                 {" "}
-                {status == "OK" ? "Thank you for Your message!" : status}
-              </span>
-            </StyledBodySubTitleZero>
-            <form ref={form} onSubmit={sendEmail}>
-              <StyledInput
-                required={true}
-                type="email"
-                placeholder="Your email"
-                name="from_name"
-              />
-              <StyledTextArea
-                name="message"
-                required={true}
-                type="text"
-                rows={5}
-                placeholder="Your message"
-              />
-              <input required={true} type="checkbox" />
-              <span
-                style={{
-                  fontSize: 15,
-                  marginLeft: 8,
-                  marginRight: 8,
-                  marginBottom: 10,
-                }}
-              >
-                Accept the{" "}
-                <a target="_black" href="/privacy">
-                  {" "}
-                  privacy policy
-                </a>
-              </span>
-              <StyledTradeButton
-                style={{ float: "right", marginTop: 18 }}
-                type="submit"
-                disabled={!can}
-              >
-                Send Message 🤝
-              </StyledTradeButton>
-            </form>
-          </Button>
+                privacy policy
+              </a>
+            </span> */}
+            <StyledTradeButton
+              style={{ float: "right", marginTop: 18 }}
+              type="submit"
+              disabled={!can}
+            >
+              Send
+            </StyledTradeButton>
+          </form>
+          {/* </Button> */}
         </StyledItemColumn>
       </StyledItemRow>
     </StyledSection>

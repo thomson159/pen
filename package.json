@@ -1,7 +1,7 @@
 {
   "name": "@web2app/app",
   "private": true,
-  "description": "Turn Website Into App",
+  "description": "Symbol of transforming weapons into words",
   "license": "GPL-3.0-or-later",
   "version": "1.0.1",
   "engines": {
@@ -20,8 +20,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/web2app-app/app-v1"
-  }
+    "url": "https://github.com/thomson159/pen"
+  },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
     "@emailjs/browser": "^3.11.0",
@@ -120,5 +120,5 @@
   },
   "keywords": [
     "gatsby"
-  ],
+  ]
 }

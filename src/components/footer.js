@@ -51,9 +51,9 @@ const Footer = () => {
       <StyledFooterLinkSection>
         <StyledFooterSection>
           <p style={{ margin: 0, marginRight: 16 }}>
-            © {new Date().getFullYear()} Web2App.app
+            © {new Date().getFullYear()}
           </p>
-          <StyledFooterLink
+          {/* <StyledFooterLink
             style={{
               marginRight: 0,
               // whiteSpace: "nowrap",
@@ -61,16 +61,16 @@ const Footer = () => {
             to="/privacy"
           >
             Privacy Policy
-          </StyledFooterLink>
+          </StyledFooterLink> */}
         </StyledFooterSection>
-        <a
+        {/* <a
           style={{ marginLeft: 16 }}
           href="https://github.com/web2app-app"
           rel="noopener noreferrer"
           target="_blank"
         >
           <StyledGithub />
-        </a>
+        </a> */}
       </StyledFooterLinkSection>
     </StyledFooter>
   );

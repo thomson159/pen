@@ -5,17 +5,11 @@ const menu = [
     link: "/",
   },
   {
-    name: "FAQ",
-    sublinks: [],
-    link: "/faq",
-  },
-  {
-    name: "Developers",
+    name: "Buy",
     sublinks: [
       {
-        name: "How to use Play Console",
-        link:
-          "https://support.google.com/googleplay/android-developer/answer/6112435?hl=en",
+        name: "Allegro",
+        link: "https://allegro.pl/",
       },
     ],
     link: undefined,
