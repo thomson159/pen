@@ -617,12 +617,14 @@ const ContactSection = () => {
         </StyledItemColumn>
         <StyledItemColumn>
           {/* <Button> */}
-          <StyledBodySubTitleZero>
-            <span style={{ color: status == "OK" ? "green" : "red" }}>
-              {" "}
-              {status == "OK" ? "Thank you for Your message!" : status}
-            </span>
-          </StyledBodySubTitleZero>
+          {status !== "" && (
+            <StyledBodySubTitleZero>
+              <span style={{ color: status == "OK" ? "green" : "red" }}>
+                {" "}
+                {status == "OK" ? "Thank you for Your message!" : status}
+              </span>
+            </StyledBodySubTitleZero>
+          )}
           <form ref={form} onSubmit={sendEmail}>
             <StyledInput
               required={true}
