@@ -14,7 +14,17 @@ module.exports = {
     repository: `https://github.com/web2app-app/app-v1`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `main`,
   },
+  flags: {
+    DEV_SSR: false,
+  },
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/locales`,
+        name: `locales`,
+      },
+    },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {

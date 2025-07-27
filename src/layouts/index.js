@@ -10,6 +10,8 @@ import "../styles/layout.css";
 import "../styles/prism-github.css";
 import "../styles/fonts.css";
 
+import "../i18n";
+
 const Layout = ({ path, children, nofooter }) => {
   return (
     <StyledThemeProvider>

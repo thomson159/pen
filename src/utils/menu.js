@@ -1,23 +1,18 @@
 const menu = [
   {
-    name: "Home",
-    sublinks: [],
+    name: "home",
     link: "/",
+    target: undefined,
   },
   {
-    name: "Buy",
-    sublinks: [
-      {
-        name: "Allegro",
-        link: "https://allegro.pl/",
-      },
-    ],
-    link: undefined,
+    name: "Allegro",
+    link: "https://allegro.pl/",
+    target: "_blank",
   },
   {
-    name: "Contact Us",
-    sublinks: [],
+    name: "contact",
     link: undefined,
+    target: undefined,
   },
 ];
 

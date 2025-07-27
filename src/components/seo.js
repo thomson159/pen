@@ -39,12 +39,12 @@ function SEO({ description, lang, title, path }) {
       <meta
         name="theme-color"
         media="(prefers-color-scheme: light)"
-        content="#FF007A"
+        content="gray"
       />
       <meta
         name="theme-color"
         media="(prefers-color-scheme: dark)"
-        content="#FF007A"
+        content="gray"
       />
 
       <meta property="og:title" content={uniTitle} />

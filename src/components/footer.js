@@ -1,7 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import Github from "../images/github.inline.svg";
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -37,14 +36,6 @@ const StyledFooterLink = styled(Link)`
   margin-right: 16px;
 `;
 
-const StyledGithub = styled(Github)`
-  path {
-    fill: ${({ theme }) => theme.textColor};
-  }
-  width: 32px;
-  height: 32px;
-`;
-
 const Footer = () => {
   return (
     <StyledFooter>
@@ -53,24 +44,17 @@ const Footer = () => {
           <p style={{ margin: 0, marginRight: 16 }}>
             © {new Date().getFullYear()}
           </p>
-          {/* <StyledFooterLink
+          <StyledFooterLink
             style={{
               marginRight: 0,
-              // whiteSpace: "nowrap",
+              whiteSpace: "nowrap",
             }}
             to="/privacy"
           >
+            {/* {t("policy")} */}
             Privacy Policy
-          </StyledFooterLink> */}
+          </StyledFooterLink>
         </StyledFooterSection>
-        {/* <a
-          style={{ marginLeft: 16 }}
-          href="https://github.com/web2app-app"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <StyledGithub />
-        </a> */}
       </StyledFooterLinkSection>
     </StyledFooter>
   );

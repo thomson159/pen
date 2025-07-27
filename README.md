@@ -1,6 +1,4 @@
-# 😎 homepage
-
-## Symbol of transforming weapons into words
+# Symbol of transforming weapons into words
 
 Based on the source code of the [uniswap.org](https://uniswap.org) homepage ([GPL-3.0 license](https://github.com/Uniswap/org-v1/blob/main/LICENSE)).
 
@@ -26,11 +24,11 @@ To deploy the app please follow the steps specified in the [Firebase documentati
 
 ## Development
 
-`node >= 12.0.0`
+`node >= 20.0.0`
 
 ### To install packages:
 
-1. `npm install`
+1. `npm install --legacy-peer-deps`
 
 ### To start the dev server:
 

@@ -1,12 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
 import Layout from "../layouts";
 import SEO from "../components/seo";
-import { Button } from "../components/button";
 import BG from "../components/bg";
-import StoreImage from "../images/stores_images.png";
-import emailjs from "@emailjs/browser";
+import { useTranslation } from "react-i18next";
+import "../i18n";
+import i18n from "../i18n";
 
 const StyledBody = styled.div`
   position: relative;
@@ -20,15 +19,6 @@ const StyledBody = styled.div`
     padding: 1rem;
     padding-bottom: 3rem;
   }
-`;
-
-const StyledTitle = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  will-change: transform;
-  align-items: flex-start;
-  margin-bottom: 4rem;
 `;
 
 const StyledBodyTitle = styled.h1`
@@ -58,6 +48,7 @@ const StyledBodySubTitleZero = styled(StyledBodySubTitle)`
 `;
 
 const StyledBodySubText = styled.h3`
+  text-align: justify;
   line-height: 140%;
   opacity: 0.8;
   @media (max-width: 640px) {
@@ -98,20 +89,24 @@ export const StyledTradeButton = styled.button`
   background-color: ${({ theme }) => theme.textColor};
   text-decoration: none;
   color: white;
-  // color: black;
   border-radius: 12px;
   display: inline-block;
   font-weight: 500;
-  width: 100%;
   width: min-content;
   white-space: nowrap;
-  border: 1px solid transparent;
+  // border: 1px solid ${({ theme }) => theme.colors.link};
+  border: none;
+
   box-shadow: ${({ theme }) => theme.shadows.small};
-  background: linear-gradient(128.17deg, #b8860b -14.78%, #ffe135 110.05%);
+  background: ${({ theme }) => `linear-gradient(
+    128.17deg,
+    ${theme.colors.link} -14.78%,
+    ${theme.backgroundColor} 110.05%
+  )`};
 
   :hover,
   :focus {
-    border: 1px solid white;
+    opacity: 0.8;
   }
 `;
 
@@ -163,7 +158,9 @@ const StyledInput = styled.input`
   font-weight: 500;
   outline: none;
   width: 100%;
-  border: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
   float: left;
   font-size: 24px;
   text-align: left;
@@ -190,39 +187,13 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledAlert = styled.div`
-  color: #856404;
-  background-color: #fff3cd;
-  border-color: #ffeeba;
-  position: relative;
-  padding: 0.5rem 1rem;
-  margin-top: 1rem;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
-  transition: opacity 0.15s linear;
-`;
-
-const StyledTradeLink = styled(Link)`
-  padding: 0.25rem 0.75rem;
-  background-color: ${({ theme }) => theme.textColor};
-  background: linear-gradient(128.17deg, #bd00ff -14.78%, #ff1f8a 110.05%);
-  text-decoration: none;
-  color: white;
-  border-radius: 12px;
-  display: inline-block;
-  font-weight: 500;
-  width: 100%;
-  width: min-content;
-  white-space: nowrap;
-  border: 1px solid transparent;
-  box-shadow: ${({ theme }) => theme.shadows.small};
-  :hover,
-  :focus {
-    border: 1px solid white;
-  }
-`;
-
 const IndexPage = (props) => {
+  const { t } = useTranslation();
+
+  // useEffect(() => {
+  //   i18n.changeLanguage(props.pageContext.language);
+  // }, [props.pageContext.language]);
+
   return (
     <Layout path={props.location.pathname}>
       <SEO title="Home" path={props.location.pathname} description="" />
@@ -231,54 +202,12 @@ const IndexPage = (props) => {
         <StyledMargin>
           <StyledItemRow style={{ marginBottom: "2rem" }}>
             <StyledItemColumn>
-              <StyledBodyTitle>
-                Symbol of transforming
-                <br />
-                weapons into words
-                {/* <span style={{ fontWeight: 200 }}>Turn </span>
-                Web<span style={{ fontWeight: 200 }}>site In</span>to App */}
-              </StyledBodyTitle>
-              {/* <form>
-                <StyledBodySubTitle>
-                  No account. No coding. Enter the website address.
-                </StyledBodySubTitle>
-                <StyledInput
-                  style={{ maxWidth: 400 }}
-                  required={true}
-                  type="url"
-                  placeholder="https://yourwebsite.com/"
-                />
-                <StyledTradeButton type="submit" disabled={true}>
-                  Create APK
-                </StyledTradeButton>
-                <StyledAlert style={{ maxWidth: 720 }}>
-                  Automatic creation of a demo is unavailable. Please contact us
-                  at contact@web2app.app.
-                </StyledAlert>
-              </form>
-              <Button
-                style={{ maxWidth: 560 }}
-                outlined
-                onClick={() => {
-                  window.open(
-                    "https://play.google.com/store/apps/details?id=demo.web2app.app",
-                    "_blank"
-                  );
-                }}
-              >
-                <StyledBodySubTitleZero>Android App 🤩</StyledBodySubTitleZero>
-                <StyledInfoText>
-                  Test how your website will work on the mobile app version by
-                  downloading our app from the Google Play store.
-                </StyledInfoText>
-              </Button> */}
+              <StyledBodyTitle>{t("slogan")}</StyledBodyTitle>
             </StyledItemColumn>
           </StyledItemRow>
         </StyledMargin>
-        {/* <EcosystemSection props={props} /> */}
-        {/* <DeveloperSection props={props} /> */}
-        {/* <FAQSection props={props} /> */}
-        <ContactSection props={props} />
+        <EcosystemSection language={props.pageContext.language} />
+        <ContactSection language={props.pageContext.language} />
       </StyledBody>
     </Layout>
   );
@@ -317,193 +246,47 @@ const StyledSection = styled.section`
   margin: 2.5rem 0;
 `;
 
-const StyledInfoText = styled.div`
-  text-align: "left";
-  opacity: 0.8;
-  margin: 0;
-  font-size: 18px;
-  font-weight: 400px;
-`;
+const EcosystemSection = ({ language }) => {
+  const { t } = useTranslation();
 
-const EcosystemSection = () => {
+  // useEffect(() => {
+  //   i18n.changeLanguage(language);
+  // }, [language]);
+
   return (
     <StyledSection>
       <StyledItemRow>
         <StyledItemColumn>
-          <StyledSectionHeader>
-            <div>
-              Without a mobile app, your business is losing dozens of potential
-              customers!
-            </div>
-            <div>Change it today! With Web2App.app you will:</div>
-          </StyledSectionHeader>
-          <StyledBodySubText>
-            <span role="img" aria-label="img">
-              ✅
-            </span>{" "}
-            Reach new people
-            <br />
-            <span role="img" aria-label="img">
-              ✅
-            </span>{" "}
-            Engage mobile users
-            <br />
-            <span role="img" aria-label="img">
-              ✅
-            </span>{" "}
-            Monetize their interest!
-          </StyledBodySubText>
+          <StyledBodySubText>{t("ecosystem.promo_1")}</StyledBodySubText>
+          <StyledBodySubText>{t("ecosystem.promo_2")}</StyledBodySubText>
+          <StyledSectionHeader>{t("ecosystem.price")}</StyledSectionHeader>
         </StyledItemColumn>
+        <StyledItemColumn></StyledItemColumn>
+      </StyledItemRow>
+      <StyledItemRow style={{ marginTop: "4rem" }}>
+        <StyledItemColumn></StyledItemColumn>
         <StyledItemColumn>
-          <StyledSectionHeader>
-            Full version{" "}
-            <span role="img" aria-label="img">
-              😎
-            </span>{" "}
-            available for Android or IOS!
-          </StyledSectionHeader>
-          <img src={StoreImage} alt="store" width={160} />
+          <StyledSectionHeader>{t("ecosystem.title_1")}</StyledSectionHeader>
+          <StyledBodySubText>{t("ecosystem.desc_1")}</StyledBodySubText>
+          <StyledBodySubText>{t("ecosystem.desc_2")}</StyledBodySubText>
+          <StyledBodySubText>{t("ecosystem.desc_3")}</StyledBodySubText>
         </StyledItemColumn>
       </StyledItemRow>
       <StyledItemRow>
         <StyledItemColumn>
-          <StyledSectionHeader>How does this work?</StyledSectionHeader>
-          <StyledBodySubText>
-            1 Test your website in the mobile demo
-            <br />
-            2 Request the full mobile version
-            <br />3 Enjoy better contact with mobile users!
-          </StyledBodySubText>
+          <StyledSectionHeader>{t("ecosystem.title_2")}</StyledSectionHeader>
+          <StyledBodySubText>{t("ecosystem.desc_4")}</StyledBodySubText>
+          <StyledSectionHeader>{t("ecosystem.title_3")}</StyledSectionHeader>
+          <StyledBodySubText>{t("ecosystem.desc_5")}</StyledBodySubText>
+          <StyledSectionHeader>{t("ecosystem.title_4")}</StyledSectionHeader>
+          <StyledBodySubText>{t("ecosystem.desc_6")}</StyledBodySubText>
+          <StyledSectionHeader>{t("ecosystem.title_5")}</StyledSectionHeader>
+          <StyledItemRow>
+            <StyledItemColumn>{t("ecosystem.tech_1")}</StyledItemColumn>
+            <StyledItemColumn>{t("ecosystem.tech_2")}</StyledItemColumn>
+          </StyledItemRow>
         </StyledItemColumn>
-        <StyledItemColumn>
-          <StyledSectionHeader>How does the app work?</StyledSectionHeader>
-          <StyledBodySubText style={{ fontSize: 18 }}>
-            The application displays the content of the website.
-            <br />
-            The website must be adapted to mobile devices.
-            <br />
-            You don't have to worry about updating the application. If you make
-            changes to the website, the application will be updated
-            automatically.
-            <br />
-            To build the application, you only need to enter the website
-            address. You can enter any address. You don't need to be the site
-            owner and have access to the code or the server.
-            <br />
-            The application requires a permanent internet connection.
-          </StyledBodySubText>
-        </StyledItemColumn>
-      </StyledItemRow>
-    </StyledSection>
-  );
-};
-
-const DeveloperSection = () => {
-  const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth",
-    });
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  return (
-    <StyledSection>
-      <StyledBodySubTitle>
-        Check our offer{" "}
-        <span role="img" aria-label="img">
-          🚀
-        </span>
-      </StyledBodySubTitle>
-      <StyledItemRow>
-        <StyledItemColumn>
-          <Button outlined onClick={scrollToTop}>
-            <StyledBodySubTitleZero>
-              Free Demo{" "}
-              <span role="img" aria-label="img">
-                😉
-              </span>
-            </StyledBodySubTitleZero>
-            <StyledInfoText>
-              <span role="img" aria-label="img">
-                🛠
-              </span>{" "}
-              Application available only on Android
-              <br />
-              <span role="img" aria-label="img">
-                🛠
-              </span>{" "}
-              Automatically download the .apk file
-              <br />
-              <span role="img" aria-label="img">
-                ❌
-              </span>{" "}
-              You cannot set your icon and application name
-              <br />
-              <span role="img" aria-label="img">
-                ❌
-              </span>{" "}
-              The app cannot be deployed on Google Play and other stores
-              <br />
-              <span role="img" aria-label="img">
-                ❌
-              </span>{" "}
-              It is not possible to make additional changes in the application
-              <br />
-              <span role="img" aria-label="img">
-                ❌
-              </span>{" "}
-              We do not provide technical support
-            </StyledInfoText>
-          </Button>
-        </StyledItemColumn>
-        <StyledItemColumn>
-          <Button outlined onClick={scrollToBottom}>
-            <StyledBodySubTitleZero>
-              Full Version{" "}
-              <span role="img" aria-label="img">
-                😎
-              </span>
-            </StyledBodySubTitleZero>
-            <StyledInfoText>
-              <span role="img" aria-label="img">
-                🛠
-              </span>{" "}
-              Application available on Android or IOS
-              <br />
-              <span role="img" aria-label="img">
-                🛠
-              </span>{" "}
-              Email contact required
-              <br />
-              <span role="img" aria-label="img">
-                ✅
-              </span>{" "}
-              You can set your icon and application name
-              <br />
-              <span role="img" aria-label="img">
-                ✅
-              </span>{" "}
-              The app can be deployed on Google Play or the App Store
-              <br />
-              <span role="img" aria-label="img">
-                ✅
-              </span>{" "}
-              It is possible to make additional changes in the application
-              <br />
-              <span role="img" aria-label="img">
-                ✅
-              </span>{" "}
-              We provide technical support
-            </StyledInfoText>
-          </Button>
-        </StyledItemColumn>
+        <StyledItemColumn></StyledItemColumn>
       </StyledItemRow>
     </StyledSection>
   );
@@ -528,49 +311,7 @@ const StyledExternalLink = styled.a`
   }
 `;
 
-const FAQSection = () => {
-  return (
-    <StyledSection style={{ marginBottom: "4rem" }}>
-      <StyledBodySubTitle style={{ marginTop: "2rem" }}>
-        Frequently asked questions{" "}
-        <span role="img" aria-label="img">
-          🧐
-        </span>
-      </StyledBodySubTitle>
-      <StyledItemRow style={{ marginBottom: "2rem" }}>
-        <StyledItemColumn>
-          <b style={{ paddingBottom: 8 }}>
-            Are you able to convert every page into an app?
-          </b>
-          We can handle every website if it has responsive design (looks good
-          and works on mobile devices through web browser). I recommend you to
-          download our official demo application and verify how your website
-          will look on mobile screen. Every feature will be working in the same
-          way like on the webpage.
-        </StyledItemColumn>
-        <StyledItemColumn>
-          <b style={{ paddingBottom: 8 }}>
-            How long it takes to convert my webpage into an app?
-          </b>
-          The implementation time of the project is respectively: for Android
-          platform 1-7 days for iOS platform 3-14 days. The waiting time is
-          mainly determined by the security checking process on the part of the
-          PlayStore and AppStore management team.
-        </StyledItemColumn>
-        <StyledItemColumn>
-          <b style={{ paddingBottom: 8 }}>
-            Do you help to create a developer account?
-          </b>
-          We help you through the entire process, from setting up a developer
-          account to uploading your app to the PlayStore / AppStore.
-        </StyledItemColumn>
-      </StyledItemRow>
-      <StyledTradeLink to="/faq">More</StyledTradeLink>
-    </StyledSection>
-  );
-};
-
-const ContactSection = () => {
+const ContactSection = ({ language }) => {
   const form = useRef();
   const [status, setStatus] = useState("");
   const [can, setCan] = useState(true);
@@ -580,32 +321,38 @@ const ContactSection = () => {
 
     setCan(false);
 
-    emailjs
-      .sendForm(
-        "service_1cm0bwh",
-        "template_a4pcz23",
-        form.current,
-        "eSz_GZMKvVtJvnGWk"
-      )
-      .then(
-        (result) => {
-          setStatus(result.text);
-          setCan(true);
-          form.current.reset();
-        },
-        (error) => {
-          setStatus(error.text);
-          setCan(true);
-        }
-      );
+    // emailjs
+    //   .sendForm(
+    //     "service_1cm0bwh",
+    //     "template_a4pcz23",
+    //     form.current,
+    //     "eSz_GZMKvVtJvnGWk"
+    //   )
+    //   .then(
+    //     (result) => {
+    //       setStatus(result.text);
+    //       setCan(true);
+    //       form.current.reset();
+    //     },
+    //     (error) => {
+    //       setStatus(error.text);
+    //       setCan(true);
+    //     }
+    //   );
   };
+
+  const { t } = useTranslation();
+
+  // useEffect(() => {
+  //   i18n.changeLanguage(language);
+  // }, [language]);
 
   return (
     <StyledSection>
       <StyledItemRow style={{ marginBottom: "2rem" }}>
         <StyledItemColumn style={{ minWidth: "255px", width: "auto" }}>
           <StyledBodySubTitle>
-            Write to us by email
+            {t("contact_1")}
             <br />
             <StyledExternalLink
               style={{ fontSize: 18 }}
@@ -616,12 +363,11 @@ const ContactSection = () => {
           </StyledBodySubTitle>
         </StyledItemColumn>
         <StyledItemColumn>
-          {/* <Button> */}
           {status !== "" && (
             <StyledBodySubTitleZero>
               <span style={{ color: status == "OK" ? "green" : "red" }}>
                 {" "}
-                {status == "OK" ? "Thank you for Your message!" : status}
+                {status == "OK" ? t("thank") : status}
               </span>
             </StyledBodySubTitleZero>
           )}
@@ -629,7 +375,7 @@ const ContactSection = () => {
             <StyledInput
               required={true}
               type="email"
-              placeholder="Your email"
+              placeholder={t("email")}
               name="from_name"
               autoComplete="off"
             />
@@ -638,9 +384,9 @@ const ContactSection = () => {
               required={true}
               type="text"
               rows={5}
-              placeholder="Your message"
+              placeholder={t("message")}
             />
-            {/* <input required={true} type="checkbox" />
+            <input required={true} type="checkbox" />
             <span
               style={{
                 fontSize: 15,
@@ -649,21 +395,21 @@ const ContactSection = () => {
                 marginBottom: 10,
               }}
             >
-              Accept the{" "}
+              {t("accept")}{" "}
               <a target="_black" href="/privacy">
                 {" "}
-                privacy policy
+                {t("policy")}
               </a>
-            </span> */}
+            </span>
+            <br />
             <StyledTradeButton
-              style={{ float: "right", marginTop: 18 }}
+              style={{ marginTop: 18 }}
               type="submit"
               disabled={!can}
             >
-              Send
+              {t("send")}
             </StyledTradeButton>
           </form>
-          {/* </Button> */}
         </StyledItemColumn>
       </StyledItemRow>
     </StyledSection>

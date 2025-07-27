@@ -1,15 +1,14 @@
-import PropTypes from "prop-types";
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Menu from "./menu";
-import Logo from "../images/web2appLogo.svg";
 import MenuIcon from "../images/menu.inline.svg";
 import CloseIcon from "../images/x.inline.svg";
 import { Sun, Moon } from "react-feather";
 import { useDarkMode } from "../contexts/Application";
 import useDocumentScrollThrottled from "../utils/useDocumentScrollThrottled";
+import { useTranslation } from "react-i18next";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -24,13 +23,13 @@ const StyledHeader = styled.header`
   top: -1px;
   background: ${({ theme, open, showBG }) =>
     showBG && !open ? theme.backgroundColor : "none"};
-  border-bottom: 1px solid ${({ theme, open, showBG }) =>
-    showBG && !open ? theme.concreteGray : "none"};
+  border-bottom: 1px solid
+    ${({ theme, open, showBG }) =>
+      showBG && !open ? theme.concreteGray : "none"};
   transition: background-color 0.25s ease;
 
   @media (max-width: 960px) {
     padding: 1rem 1.25rem;
-    // height: ${({ open }) => (open ? "100vh" : "100%")};
   }
 `;
 
@@ -66,33 +65,6 @@ const StyledNav = styled.nav`
   }
 `;
 
-const StyledNavTitleWrapper = styled.nav`
-  display: flex;
-  align-items: center;
-  width: 100%;
-`;
-
-const StyledTradeLink = styled.a`
-  padding: 0.25rem 0.75rem;
-  background-color: ${({ theme }) => theme.textColor};
-  background: linear-gradient(128.17deg, #bd00ff -14.78%, #ff1f8a 110.05%);
-  text-decoration: none;
-  color: white;
-  border-radius: 12px;
-  display: inline-block;
-  font-weight: 500;
-  width: 100%;
-  width: min-content;
-  white-space: nowrap;
-  margin-left: 1rem;
-  border: 1px solid transparent;
-  box-shadow: ${({ theme }) => theme.shadows.small};
-  :hover,
-  :focus {
-    border: 1px solid white;
-  }
-`;
-
 const StyledButton = styled.button`
   border: none;
   background-color: rgba(0, 0, 0, 0);
@@ -109,13 +81,6 @@ const StyledButton = styled.button`
   :hover {
     cursor: pointer;
   }
-`;
-
-const StyledHomeLink = styled.a`
-  cursor: pointer;
-  max-height: 48px;
-  display: flex;
-  align-items: center;
 `;
 
 const MenuToggle = styled.button`
@@ -156,11 +121,9 @@ const Header = () => {
   const button = useRef();
   const [isMenuOpen, updateIsMenuOpen] = useState(false);
   const [darkMode, toggleDarkMode] = useDarkMode();
-
   const [headerBG, setHeaderBG] = useState(false);
 
-  useDocumentScrollThrottled((callbackData) => {
-    const { currentScrollTop } = callbackData;
+  useDocumentScrollThrottled(({ currentScrollTop }) => {
     setHeaderBG(currentScrollTop > 2);
   });
 
@@ -170,13 +133,9 @@ const Header = () => {
         siteMetadata {
           menulinks {
             name
-            sublinks {
-              name
-              link
-            }
             link
+            target
           }
-          title
         }
       }
     }
@@ -203,38 +162,21 @@ const Header = () => {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isMenuOpen, updateIsMenuOpen, matches]);
+  }, [isMenuOpen, matches]);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language;
+
+  const changeLang = (lng) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem("i18nextLng", lng);
   };
 
   return (
     <StyledHeader open={isMenuOpen} showBG={headerBG}>
-      {/* <StyledNavTitleWrapper>
-        <StyledHomeLink
-          onClick={scrollToTop}
-          style={{
-            textDecoration: `none`,
-          }}
-        >
-          <img
-            alt="logo"
-            className="myLogo"
-            src={Logo}
-            style={{
-              width: 32,
-            }}
-          />
-        </StyledHomeLink>
-      </StyledNavTitleWrapper> */}
       <MenuToggle
         ref={button}
         open={isMenuOpen}
@@ -243,29 +185,21 @@ const Header = () => {
         {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
       </MenuToggle>
       <StyledNav ref={node} open={isMenuOpen}>
-        {data.site.siteMetadata.menulinks.map((item) => {
-          return <Menu key={item.name} data={item} />;
-        })}
+        {data.site.siteMetadata.menulinks.map((item) => (
+          <Menu key={item.name} data={item} />
+        ))}
         <StyledButton type="button" onClick={toggleDarkMode}>
           {darkMode ? <Sun size={20} /> : <Moon size={20} />}
         </StyledButton>
-        {/* <StyledTradeLink
-          target="_blank"
-          href="https://play.google.com/store/apps/developer?id=Web2App.app"
+        <StyledButton
+          type="button"
+          onClick={() => changeLang(currentLang === "en" ? "pl" : "en")}
         >
-          Android App
-        </StyledTradeLink> */}
+          {currentLang.toUpperCase()}
+        </StyledButton>
       </StyledNav>
     </StyledHeader>
   );
-};
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-};
-
-Header.defaultProps = {
-  siteTitle: ``,
 };
 
 export default Header;
