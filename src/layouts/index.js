@@ -15,7 +15,7 @@ import "../i18n";
 const Layout = ({ path, children, nofooter }) => {
   return (
     <StyledThemeProvider>
-      <Header path={path} siteTitle="pen" />
+      <Header path={path} siteTitle="Unique Pen" />
       <Mdx>{children}</Mdx>
       {nofooter ? null : <Footer />}
     </StyledThemeProvider>

@@ -5,7 +5,7 @@ import SEO from "../components/seo";
 import BG from "../components/bg";
 import { useTranslation } from "react-i18next";
 import "../i18n";
-import i18n from "../i18n";
+import photo from "../images/photo.png";
 
 const StyledBody = styled.div`
   position: relative;
@@ -26,6 +26,7 @@ const StyledBodyTitle = styled.h1`
   white-space: wrap;
   overflow-wrap: normal;
   margin: 0rem 0 1rem 0;
+  max-width: 60%;
 
   @media (max-width: 640px) {
     font-size: 56px;
@@ -48,6 +49,7 @@ const StyledBodySubTitleZero = styled(StyledBodySubTitle)`
 `;
 
 const StyledBodySubText = styled.h3`
+  font-size: 18px;
   text-align: justify;
   line-height: 140%;
   opacity: 0.8;
@@ -66,7 +68,7 @@ const StyledItemRow = styled.nav`
     flex-direction: row;
     & > *:not(:first-of-type) {
       margin-top: 0;
-      margin-left: 24px;
+      margin-left: 2rem;
     }
   }
 `;
@@ -86,7 +88,7 @@ export const StyledTradeButton = styled.button`
   font-size: 18px;
   cursor: pointer;
   padding: 0.25rem 0.75rem;
-  background-color: ${({ theme }) => theme.textColor};
+  background-color: #b8860b;
   text-decoration: none;
   color: white;
   border-radius: 12px;
@@ -94,14 +96,13 @@ export const StyledTradeButton = styled.button`
   font-weight: 500;
   width: min-content;
   white-space: nowrap;
-  // border: 1px solid ${({ theme }) => theme.colors.link};
   border: none;
 
   box-shadow: ${({ theme }) => theme.shadows.small};
   background: ${({ theme }) => `linear-gradient(
     128.17deg,
-    ${theme.colors.link} -14.78%,
-    ${theme.backgroundColor} 110.05%
+    gray -14.78%,
+  #B8860B 110.05%
   )`};
 
   :hover,
@@ -190,13 +191,13 @@ const StyledInput = styled.input`
 const IndexPage = (props) => {
   const { t } = useTranslation();
 
-  // useEffect(() => {
-  //   i18n.changeLanguage(props.pageContext.language);
-  // }, [props.pageContext.language]);
-
   return (
     <Layout path={props.location.pathname}>
-      <SEO title="Home" path={props.location.pathname} description="" />
+      <SEO
+        title={t("title")}
+        path={props.location.pathname}
+        description={t("slogan")}
+      />
       <BG />
       <StyledBody>
         <StyledMargin>
@@ -236,6 +237,32 @@ const StyledSectionHeader = styled.h1`
   }
 `;
 
+const StyledSectionImageRight = styled.img`
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  // padding-right: 24px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+
+  @media (max-width: 640px) {
+    padding-right: 0;
+  }
+`;
+
+const StyledSectionImageLeft = styled.img`
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  // padding-left: 24px;
+  object-position: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  // padding: 8px;
+
+  @media (max-width: 640px) {
+    padding-left: 0;
+  }
+`;
+
 const StyledMargin = styled.div`
   margin: 2.5rem 0;
 `;
@@ -249,22 +276,22 @@ const StyledSection = styled.section`
 const EcosystemSection = ({ language }) => {
   const { t } = useTranslation();
 
-  // useEffect(() => {
-  //   i18n.changeLanguage(language);
-  // }, [language]);
-
   return (
     <StyledSection>
       <StyledItemRow>
         <StyledItemColumn>
-          <StyledBodySubText>{t("ecosystem.promo_1")}</StyledBodySubText>
+          <StyledBodySubText style={{ textAlign: "left" }}>
+            {t("ecosystem.promo_1")}
+          </StyledBodySubText>
           <StyledBodySubText>{t("ecosystem.promo_2")}</StyledBodySubText>
-          <StyledSectionHeader>{t("ecosystem.price")}</StyledSectionHeader>
+          {/* <StyledSectionHeader>{t("ecosystem.price")}</StyledSectionHeader> */}
         </StyledItemColumn>
         <StyledItemColumn></StyledItemColumn>
       </StyledItemRow>
       <StyledItemRow style={{ marginTop: "4rem" }}>
-        <StyledItemColumn></StyledItemColumn>
+        <StyledItemColumn>
+          <StyledSectionImageRight src={photo} alt="Photo 1" />
+        </StyledItemColumn>
         <StyledItemColumn>
           <StyledSectionHeader>{t("ecosystem.title_1")}</StyledSectionHeader>
           <StyledBodySubText>{t("ecosystem.desc_1")}</StyledBodySubText>
@@ -272,7 +299,7 @@ const EcosystemSection = ({ language }) => {
           <StyledBodySubText>{t("ecosystem.desc_3")}</StyledBodySubText>
         </StyledItemColumn>
       </StyledItemRow>
-      <StyledItemRow>
+      <StyledItemRow style={{ marginTop: "4rem", marginBottom: "4rem" }}>
         <StyledItemColumn>
           <StyledSectionHeader>{t("ecosystem.title_2")}</StyledSectionHeader>
           <StyledBodySubText>{t("ecosystem.desc_4")}</StyledBodySubText>
@@ -281,12 +308,41 @@ const EcosystemSection = ({ language }) => {
           <StyledSectionHeader>{t("ecosystem.title_4")}</StyledSectionHeader>
           <StyledBodySubText>{t("ecosystem.desc_6")}</StyledBodySubText>
           <StyledSectionHeader>{t("ecosystem.title_5")}</StyledSectionHeader>
-          <StyledItemRow>
-            <StyledItemColumn>{t("ecosystem.tech_1")}</StyledItemColumn>
-            <StyledItemColumn>{t("ecosystem.tech_2")}</StyledItemColumn>
+          <StyledItemRow style={{ marginBottom: "3rem" }}>
+            <StyledItemColumn>
+              {t("ecosystem.tech_1")}
+              <br />
+              <br />
+              {t("37g")}
+            </StyledItemColumn>
+            <StyledItemColumn>
+              {t("ecosystem.tech_2")}
+              <br />
+              {t("box")}
+            </StyledItemColumn>
           </StyledItemRow>
+
+          <div
+            style={{
+              boxShadow: "0 0 20px rgba(0, 0, 0, 0.4)",
+              paddingLeft: "2rem",
+              paddingRight: "2rem",
+            }}
+          >
+            <StyledSectionHeader>{t("setPriceHeader")}</StyledSectionHeader>
+            <StyledItemRow style={{ marginBottom: "3rem" }}>
+              <StyledItemColumn>
+                {t("setContents")}
+                <StyledSectionHeader>{t("shippingPoland")}</StyledSectionHeader>
+                {t("shippingAbroad")}
+              </StyledItemColumn>
+            </StyledItemRow>
+          </div>
         </StyledItemColumn>
-        <StyledItemColumn></StyledItemColumn>
+        <StyledItemColumn>
+          <StyledSectionImageLeft src={photo} alt="Photo 2" />
+          <StyledSectionImageLeft src={photo} alt="Photo 3" />
+        </StyledItemColumn>
       </StyledItemRow>
     </StyledSection>
   );
@@ -315,6 +371,7 @@ const ContactSection = ({ language }) => {
   const form = useRef();
   const [status, setStatus] = useState("");
   const [can, setCan] = useState(true);
+  const { t, i18n } = useTranslation();
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -341,11 +398,9 @@ const ContactSection = ({ language }) => {
     //   );
   };
 
-  const { t } = useTranslation();
-
-  // useEffect(() => {
-  //   i18n.changeLanguage(language);
-  // }, [language]);
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language, i18n]);
 
   return (
     <StyledSection>
@@ -361,13 +416,13 @@ const ContactSection = ({ language }) => {
               contact@
             </StyledExternalLink>
           </StyledBodySubTitle>
+          {t("info")}
         </StyledItemColumn>
         <StyledItemColumn>
           {status !== "" && (
             <StyledBodySubTitleZero>
-              <span style={{ color: status == "OK" ? "green" : "red" }}>
-                {" "}
-                {status == "OK" ? t("thank") : status}
+              <span style={{ color: status === "OK" ? "green" : "red" }}>
+                {status === "OK" ? t("thank") : status}
               </span>
             </StyledBodySubTitleZero>
           )}
@@ -396,7 +451,7 @@ const ContactSection = ({ language }) => {
               }}
             >
               {t("accept")}{" "}
-              <a target="_black" href="/privacy">
+              <a target="_black" href="/privacy-en">
                 {" "}
                 {t("policy")}
               </a>

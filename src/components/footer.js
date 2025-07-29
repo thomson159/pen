@@ -41,18 +41,28 @@ const Footer = () => {
     <StyledFooter>
       <StyledFooterLinkSection>
         <StyledFooterSection>
-          <p style={{ margin: 0, marginRight: 16 }}>
+          <p style={{ margin: 0, marginRight: 20 }}>
             © {new Date().getFullYear()}
           </p>
+          <StyledFooterLink
+            style={{
+              marginRight: 16,
+              whiteSpace: "nowrap",
+            }}
+            to="/privacy-en"
+          >
+            {/* {t("policy")} */}
+            Policy (EN)
+          </StyledFooterLink>
           <StyledFooterLink
             style={{
               marginRight: 0,
               whiteSpace: "nowrap",
             }}
-            to="/privacy"
+            to="/privacy-pl"
           >
             {/* {t("policy")} */}
-            Privacy Policy
+            Polityka (PL)
           </StyledFooterLink>
         </StyledFooterSection>
       </StyledFooterLinkSection>

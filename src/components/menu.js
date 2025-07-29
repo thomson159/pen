@@ -16,7 +16,6 @@ const StyledMenu = styled.button`
   padding: 0.5rem 0;
   background: none;
   border: none;
-  color: ${({ theme }) => theme.textColor};
 
   @media (max-width: 960px) {
     font-size: 1.5rem;
@@ -25,27 +24,12 @@ const StyledMenu = styled.button`
     align-items: flex-start;
     padding: 0;
   }
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.grey7};
-    @media (max-width: 960px) {
-      color: ${({ theme }) => theme.textColor};
-    }
-  }
-
-  &:focus {
-    outline: none;
-    @media (max-width: 960px) {
-      color: ${({ theme }) => theme.textColor};
-    }
-  }
 `;
 
 const StyledMenuTitle = styled.span`
   font-size: 1.15rem;
   font-weight: 400;
   padding: 0 0 0.2rem;
-  color: ${({ theme }) => theme.textColor};
   cursor: pointer;
 
   &:hover {
@@ -72,15 +56,10 @@ const StyledLinkBase = `
   padding: 0;
   text-decoration: none;
   cursor: pointer;
-  color: ${({ theme }) => theme.textColor};
 
   &:focus {
     outline: 0;
     opacity: 0.9;
-  }
-
-  &:hover * {
-    color: ${({ theme }) => theme.colors.grey5};
   }
 `;
 

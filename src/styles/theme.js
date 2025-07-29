@@ -204,7 +204,7 @@ export const GlobalStyle = createGlobalStyle`
     position: relative;
   }
   a{
-    color: ${({ theme }) => theme.colors.link};
+    color: #B8860B;
     text-decoration: none;
   }
   button{

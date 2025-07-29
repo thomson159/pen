@@ -4,12 +4,12 @@ import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
 function SEO({ description, lang, title, path }) {
+  //removed siteUrl
   const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
-            siteUrl
             title
             description
             author
@@ -20,7 +20,7 @@ function SEO({ description, lang, title, path }) {
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  const uniTitle = "pen";
+  const uniTitle = "Unique Pen";
 
   return (
     <Helmet
@@ -50,7 +50,7 @@ function SEO({ description, lang, title, path }) {
       <meta property="og:title" content={uniTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content={"website"} />
-      <meta property="og:url" content={site.siteMetadata.siteUrl + path} />
+      {/* <meta property="og:url" content={site.siteMetadata.siteUrl + path} /> */}
       {/* <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/images/'}twitter-card.png`} /> */}
 
       <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
@@ -66,7 +66,7 @@ function SEO({ description, lang, title, path }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``,
+  description: `Symbol of transforming weapons into words`,
 };
 
 SEO.propTypes = {

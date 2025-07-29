@@ -5,14 +5,14 @@ const menu = [
     target: undefined,
   },
   {
-    name: "Allegro",
-    link: "https://allegro.pl/",
-    target: "_blank",
-  },
-  {
     name: "contact",
     link: undefined,
     target: undefined,
+  },
+  {
+    name: "Allegro",
+    link: "https://allegro.pl/",
+    target: "_blank",
   },
 ];
 

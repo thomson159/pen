@@ -6,12 +6,12 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `pen`,
+    title: `Unique Pen`,
     description: `Symbol of transforming weapons into words`,
-    author: `@pen`,
+    author: `@thomson159`,
     menulinks: menu,
-    siteUrl: `https://pen/`,
-    repository: `https://github.com/web2app-app/app-v1`,
+    // siteUrl: ``,
+    repository: `https://github.com/thomson159/pen`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `main`,
   },
   flags: {
@@ -25,12 +25,12 @@ module.exports = {
         name: `locales`,
       },
     },
-    {
-      resolve: `gatsby-plugin-canonical-urls`,
-      options: {
-        siteUrl: `https://pen`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-canonical-urls`,
+    //   options: {
+    //     siteUrl: `https://pen`,
+    //   },
+    // },
     {
       resolve: "gatsby-plugin-replace-path",
       options: {
@@ -84,9 +84,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-twitter-cards`,
             options: {
-              title: "pen", // website title
+              title: "Unique Pen", // website title
               separator: "|", // default
-              author: "@pen",
+              author: "@thomson159", // twitter handle
               // background: require.resolve('./static/images/twitter_card.png'), // path to 1200x630px file or hex code, defaults to black (#000000)
               fontColor: "#663399", // defaults to white (#ffffff)
               fontStyle: "sans-serif", // default
