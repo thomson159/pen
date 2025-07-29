@@ -7,11 +7,17 @@ function getSlugPath(slug) {
 
 exports.onPreInit = () => {
   if (process.argv[2] === "build") {
-    fs.rmdirSync(path.join(__dirname, "build"), { recursive: true });
-    fs.renameSync(
-      path.join(__dirname, "public"),
-      path.join(__dirname, "public_dev")
-    );
+    const buildPath = path.join(__dirname, "build");
+    if (fs.existsSync(buildPath)) {
+      fs.rmSync(buildPath, { recursive: true, force: true });
+    }
+
+    const publicDevPath = path.join(__dirname, "public_dev");
+    if (fs.existsSync(publicDevPath)) {
+      fs.rmdirSync(publicDevPath, { recursive: true });
+    }
+
+    fs.renameSync(path.join(__dirname, "public"), publicDevPath);
   }
 };
 
