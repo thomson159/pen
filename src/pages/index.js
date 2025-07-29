@@ -214,7 +214,7 @@ const IndexPage = (props) => {
       <BG />
       <StyledBody>
         <StyledMargin>
-          <StyledItemRow style={{ marginBottom: "2rem" }}>
+          <StyledItemRow>
             <StyledItemColumn>
               <StyledBodyTitle>{t("slogan")}</StyledBodyTitle>
             </StyledItemColumn>
@@ -423,7 +423,7 @@ const ContactSection = ({ language }) => {
 
   return (
     <StyledSection>
-      <StyledItemRow style={{ marginBottom: "2rem" }}>
+      <StyledItemRow>
         <StyledItemColumn
           style={{ minWidth: "255px", width: "auto", marginBottom: "2rem" }}
         >
