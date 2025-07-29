@@ -219,6 +219,13 @@ const IndexPage = (props) => {
               <StyledBodyTitle>{t("slogan")}</StyledBodyTitle>
             </StyledItemColumn>
           </StyledItemRow>
+          <StyledItemRow>
+            <StyledItemColumn>
+              <StyledBodySubText>{t("ecosystem.promo_1")}</StyledBodySubText>
+              <StyledBodySubText>{t("ecosystem.promo_2")}</StyledBodySubText>
+            </StyledItemColumn>
+            <StyledItemColumn></StyledItemColumn>
+          </StyledItemRow>
         </StyledMargin>
         <EcosystemSection language={props.pageContext.language} />
         <StyledItemRow style={{ marginBottom: "4rem" }}>
@@ -283,13 +290,17 @@ const StyledSectionImageLeft = styled.img`
 `;
 
 const StyledMargin = styled.div`
-  margin: 2.5rem 0;
+  min-height: 60vh;
+
+  @media (max-width: 640px) {
+    min-height: calc(100vh - 57px);
+  }
 `;
 
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
-  margin: 2.5rem 0;
+  margin-bottom: 2.5rem;
 `;
 
 const EcosystemSection = ({ language }) => {
@@ -297,13 +308,6 @@ const EcosystemSection = ({ language }) => {
 
   return (
     <StyledSection>
-      <StyledItemRow>
-        <StyledItemColumn>
-          <StyledBodySubText>{t("ecosystem.promo_1")}</StyledBodySubText>
-          <StyledBodySubText>{t("ecosystem.promo_2")}</StyledBodySubText>
-        </StyledItemColumn>
-        <StyledItemColumn></StyledItemColumn>
-      </StyledItemRow>
       <StyledItemRow>
         <StyledItemColumn>
           <StyledSectionImageRight src={photo} alt="Photo 1" />
