@@ -24,7 +24,7 @@ To deploy the app please follow the steps specified in the [Firebase documentati
 
 ## Development
 
-`node >= 20.0.0`
+`node >= v20.18.1`
 
 ### To install packages:
 
