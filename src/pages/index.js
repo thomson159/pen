@@ -22,14 +22,25 @@ const StyledBody = styled.div`
 `;
 
 const StyledBodyTitle = styled.h1`
-  font-size: 60px;
+  font-size: 56px;
   white-space: wrap;
   overflow-wrap: normal;
   margin: 0rem 0 1rem 0;
-  max-width: 60%;
 
   @media (max-width: 640px) {
-    font-size: 56px;
+    font-size: 52px;
+  }
+`;
+
+const StyledBodySlogan = styled.h3`
+  text-align: center;
+  font-size: 52px;
+  white-space: wrap;
+  overflow-wrap: normal;
+  margin: 0rem 0 1rem 0;
+
+  @media (max-width: 640px) {
+    font-size: 32px;
   }
 `;
 
@@ -50,22 +61,24 @@ const StyledBodySubTitleZero = styled(StyledBodySubTitle)`
 
 const StyledBodySubText = styled.h3`
   font-size: 18px;
-  text-align: justify;
   line-height: 140%;
   opacity: 0.8;
-  @media (max-width: 640px) {
-    text-align: left;
-  }
 `;
 
 const StyledItemRow = styled.nav`
   display: flex;
   flex-direction: column;
-  & > *:not(:first-of-type) {
-    margin-top: 12px;
-  }
+
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+
+  // & > *:not(:first-of-type) {
+  //   margin-top: 12px;
+  // }
+
   @media (min-width: 961px) {
     flex-direction: row;
+
     & > *:not(:first-of-type) {
       margin-top: 0;
       margin-left: 2rem;
@@ -208,6 +221,15 @@ const IndexPage = (props) => {
           </StyledItemRow>
         </StyledMargin>
         <EcosystemSection language={props.pageContext.language} />
+        <StyledItemRow style={{ marginBottom: "4rem" }}>
+          <StyledItemColumn>
+            <StyledBodySlogan>
+              {t("pen1")}
+              <br />
+              {t("pen2")}
+            </StyledBodySlogan>
+          </StyledItemColumn>
+        </StyledItemRow>
         <ContactSection language={props.pageContext.language} />
       </StyledBody>
     </Layout>
@@ -241,7 +263,6 @@ const StyledSectionImageRight = styled.img`
   width: 100%;
   max-height: 500px;
   object-fit: cover;
-  // padding-right: 24px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 
   @media (max-width: 640px) {
@@ -253,10 +274,8 @@ const StyledSectionImageLeft = styled.img`
   width: 100%;
   max-height: 500px;
   object-fit: cover;
-  // padding-left: 24px;
   object-position: center;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  // padding: 8px;
 
   @media (max-width: 640px) {
     padding-left: 0;
@@ -280,15 +299,12 @@ const EcosystemSection = ({ language }) => {
     <StyledSection>
       <StyledItemRow>
         <StyledItemColumn>
-          <StyledBodySubText style={{ textAlign: "left" }}>
-            {t("ecosystem.promo_1")}
-          </StyledBodySubText>
+          <StyledBodySubText>{t("ecosystem.promo_1")}</StyledBodySubText>
           <StyledBodySubText>{t("ecosystem.promo_2")}</StyledBodySubText>
-          {/* <StyledSectionHeader>{t("ecosystem.price")}</StyledSectionHeader> */}
         </StyledItemColumn>
         <StyledItemColumn></StyledItemColumn>
       </StyledItemRow>
-      <StyledItemRow style={{ marginTop: "4rem" }}>
+      <StyledItemRow>
         <StyledItemColumn>
           <StyledSectionImageRight src={photo} alt="Photo 1" />
         </StyledItemColumn>
@@ -299,51 +315,50 @@ const EcosystemSection = ({ language }) => {
           <StyledBodySubText>{t("ecosystem.desc_3")}</StyledBodySubText>
         </StyledItemColumn>
       </StyledItemRow>
-      <StyledItemRow style={{ marginTop: "4rem", marginBottom: "4rem" }}>
+      <StyledItemRow>
         <StyledItemColumn>
           <StyledSectionHeader>{t("ecosystem.title_2")}</StyledSectionHeader>
           <StyledBodySubText>{t("ecosystem.desc_4")}</StyledBodySubText>
           <StyledSectionHeader>{t("ecosystem.title_3")}</StyledSectionHeader>
           <StyledBodySubText>{t("ecosystem.desc_5")}</StyledBodySubText>
-          <StyledSectionHeader>{t("ecosystem.title_4")}</StyledSectionHeader>
-          <StyledBodySubText>{t("ecosystem.desc_6")}</StyledBodySubText>
-          <StyledSectionHeader>{t("ecosystem.title_5")}</StyledSectionHeader>
-          <StyledItemRow style={{ marginBottom: "3rem" }}>
-            <StyledItemColumn>
-              {t("ecosystem.tech_1")}
-              <br />
-              <br />
-              {t("37g")}
-            </StyledItemColumn>
-            <StyledItemColumn>
-              {t("ecosystem.tech_2")}
-              <br />
-              {t("box")}
-            </StyledItemColumn>
-          </StyledItemRow>
-
-          <div
-            style={{
-              boxShadow: "0 0 20px rgba(0, 0, 0, 0.4)",
-              paddingLeft: "2rem",
-              paddingRight: "2rem",
-            }}
-          >
-            <StyledSectionHeader>{t("setPriceHeader")}</StyledSectionHeader>
-            <StyledItemRow style={{ marginBottom: "3rem" }}>
-              <StyledItemColumn>
-                {t("setContents")}
-                <StyledSectionHeader>{t("shippingPoland")}</StyledSectionHeader>
-                {t("shippingAbroad")}
-              </StyledItemColumn>
-            </StyledItemRow>
-          </div>
         </StyledItemColumn>
         <StyledItemColumn>
           <StyledSectionImageLeft src={photo} alt="Photo 2" />
-          <StyledSectionImageLeft src={photo} alt="Photo 3" />
         </StyledItemColumn>
       </StyledItemRow>
+      <StyledItemRow>
+        <StyledItemColumn>
+          <StyledSectionImageRight src={photo} alt="Photo 3" />
+        </StyledItemColumn>
+        <StyledItemColumn>
+          <StyledSectionHeader>{t("ecosystem.title_4")}</StyledSectionHeader>
+          <StyledBodySubText>{t("ecosystem.desc_6")}</StyledBodySubText>
+          <StyledSectionHeader>{t("ecosystem.title_5")}</StyledSectionHeader>
+          {t("ecosystem.tech_1")}
+          <br />
+          {t("37g")}
+        </StyledItemColumn>
+      </StyledItemRow>
+
+      <div
+        style={{
+          boxShadow: "0 0 20px rgba(0, 0, 0, 0.4)",
+          paddingLeft: "2rem",
+          paddingRight: "2rem",
+          width: "100%",
+          maxWidth: "600px",
+          paddingBottom: "2rem",
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginTop: "4rem",
+          marginBottom: "4rem",
+        }}
+      >
+        <StyledSectionHeader>{t("setPriceHeader")}</StyledSectionHeader>
+        {t("setContents")}
+        <StyledSectionHeader>{t("shippingPoland")}</StyledSectionHeader>
+        {t("shippingAbroad")}
+      </div>
     </StyledSection>
   );
 };
@@ -405,7 +420,9 @@ const ContactSection = ({ language }) => {
   return (
     <StyledSection>
       <StyledItemRow style={{ marginBottom: "2rem" }}>
-        <StyledItemColumn style={{ minWidth: "255px", width: "auto" }}>
+        <StyledItemColumn
+          style={{ minWidth: "255px", width: "auto", marginBottom: "2rem" }}
+        >
           <StyledBodySubTitle>
             {t("contact_1")}
             <br />
