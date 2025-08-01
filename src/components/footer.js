@@ -49,20 +49,10 @@ const Footer = () => {
               marginRight: 16,
               whiteSpace: "nowrap",
             }}
-            to="/privacy-en"
+            to="/privacy"
           >
             {/* {t("policy")} */}
-            Policy (EN)
-          </StyledFooterLink>
-          <StyledFooterLink
-            style={{
-              marginRight: 0,
-              whiteSpace: "nowrap",
-            }}
-            to="/privacy-pl"
-          >
-            {/* {t("policy")} */}
-            Polityka (PL)
+            Policy
           </StyledFooterLink>
         </StyledFooterSection>
       </StyledFooterLinkSection>

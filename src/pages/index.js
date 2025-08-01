@@ -6,6 +6,7 @@ import BG from "../components/bg";
 import { useTranslation } from "react-i18next";
 import "../i18n";
 import photo from "../images/photo.png";
+import ImageSwitcher from "../components/ImageSwitcher";
 
 const StyledBody = styled.div`
   position: relative;
@@ -196,9 +197,6 @@ const StyledInput = styled.input`
   ::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
-
-  ::placeholder {
-  }
 `;
 
 const IndexPage = (props) => {
@@ -216,13 +214,13 @@ const IndexPage = (props) => {
         <StyledMargin>
           <StyledItemRow>
             <StyledItemColumn>
-              <StyledBodyTitle>{t("slogan")}</StyledBodyTitle>
+              <StyledBodyTitle>{t("ecosystem.title_1")}</StyledBodyTitle>
             </StyledItemColumn>
           </StyledItemRow>
           <StyledItemRow>
             <StyledItemColumn>
-              <StyledBodySubText>{t("ecosystem.promo_1")}</StyledBodySubText>
-              <StyledBodySubText>{t("ecosystem.promo_2")}</StyledBodySubText>
+              <StyledBodySubText>{t("ecosystem.desc_1")}</StyledBodySubText>
+              <StyledBodySubText>{t("ecosystem.desc_2")}</StyledBodySubText>
             </StyledItemColumn>
             <StyledItemColumn></StyledItemColumn>
           </StyledItemRow>
@@ -262,30 +260,6 @@ const StyledSectionHeader = styled.h1`
   @media (max-width: 640px) {
     width: 100%;
     font-weight: 400;
-    text-align: left;
-  }
-`;
-
-const StyledSectionImageRight = styled.img`
-  width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-
-  @media (max-width: 640px) {
-    padding-right: 0;
-  }
-`;
-
-const StyledSectionImageLeft = styled.img`
-  width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  object-position: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-
-  @media (max-width: 640px) {
-    padding-left: 0;
   }
 `;
 
@@ -308,39 +282,49 @@ const EcosystemSection = ({ language }) => {
 
   return (
     <StyledSection>
-      <StyledItemRow>
+      {/* <StyledItemRow>
         <StyledItemColumn>
           <StyledSectionImageRight src={photo} alt="Photo 1" />
         </StyledItemColumn>
         <StyledItemColumn>
           <StyledSectionHeader>{t("ecosystem.title_1")}</StyledSectionHeader>
-          <StyledBodySubText>{t("ecosystem.desc_1")}</StyledBodySubText>
-          <StyledBodySubText>{t("ecosystem.desc_2")}</StyledBodySubText>
           <StyledBodySubText>{t("ecosystem.desc_3")}</StyledBodySubText>
         </StyledItemColumn>
-      </StyledItemRow>
+      </StyledItemRow> */}
       <StyledItemRow>
+        <StyledItemColumn>
+          <ImageSwitcher
+            img1={photo}
+            img2={
+              "https://www.bigfootdigital.co.uk/wp-content/uploads/2020/07/image-optimisation-scaled.jpg"
+            }
+          />
+        </StyledItemColumn>
         <StyledItemColumn>
           <StyledSectionHeader>{t("ecosystem.title_2")}</StyledSectionHeader>
           <StyledBodySubText>{t("ecosystem.desc_4")}</StyledBodySubText>
           <StyledSectionHeader>{t("ecosystem.title_3")}</StyledSectionHeader>
           <StyledBodySubText>{t("ecosystem.desc_5")}</StyledBodySubText>
         </StyledItemColumn>
-        <StyledItemColumn>
-          <StyledSectionImageLeft src={photo} alt="Photo 2" />
-        </StyledItemColumn>
       </StyledItemRow>
       <StyledItemRow>
-        <StyledItemColumn>
-          <StyledSectionImageRight src={photo} alt="Photo 3" />
-        </StyledItemColumn>
-        <StyledItemColumn>
+        <StyledItemColumn style={{ marginBottom: "4rem" }}>
           <StyledSectionHeader>{t("ecosystem.title_4")}</StyledSectionHeader>
           <StyledBodySubText>{t("ecosystem.desc_6")}</StyledBodySubText>
           <StyledSectionHeader>{t("ecosystem.title_5")}</StyledSectionHeader>
           {t("ecosystem.tech_1")}
           <br />
           {t("37g")}
+          <br />
+          {t("ecosystem.tech_2")}: Cross-compatible
+        </StyledItemColumn>
+        <StyledItemColumn>
+          <ImageSwitcher
+            img1={photo}
+            img2={
+              "https://www.bigfootdigital.co.uk/wp-content/uploads/2020/07/image-optimisation-scaled.jpg"
+            }
+          />
         </StyledItemColumn>
       </StyledItemRow>
 
@@ -350,15 +334,19 @@ const EcosystemSection = ({ language }) => {
           paddingLeft: "2rem",
           paddingRight: "2rem",
           width: "100%",
-          maxWidth: "600px",
+          maxWidth: "650px",
           paddingBottom: "2rem",
           marginLeft: "auto",
           marginRight: "auto",
           marginTop: "4rem",
           marginBottom: "4rem",
+          textAlign: "center",
         }}
       >
-        <StyledSectionHeader>{t("setPriceHeader")}</StyledSectionHeader>
+        <StyledSectionHeader>
+          <div style={{ fontSize: 28 }}>219 PLN - 69 USD - 59 EUR</div>
+          {t("setPriceHeader")}
+        </StyledSectionHeader>
         {t("setContents")}
         <StyledSectionHeader>{t("shippingPoland")}</StyledSectionHeader>
         {t("shippingAbroad")}
@@ -472,7 +460,7 @@ const ContactSection = ({ language }) => {
               }}
             >
               {t("accept")}{" "}
-              <a target="_black" href="/privacy-en">
+              <a target="_black" href="/privacy">
                 {" "}
                 {t("policy")}
               </a>
