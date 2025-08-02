@@ -225,9 +225,10 @@ const IndexPage = (props) => {
         <StyledItemRow style={{ marginBottom: "4rem" }}>
           <StyledItemColumn>
             <StyledBodySlogan>
-              {t("pen1")}
+              {t("slogan")}
+              {/* {t("pen1")}
               <br />
-              {t("pen2")}
+              {t("pen2")} */}
             </StyledBodySlogan>
           </StyledItemColumn>
         </StyledItemRow>
@@ -280,12 +281,7 @@ const EcosystemSection = () => {
     <StyledSection>
       <StyledItemRow>
         <StyledItemColumn>
-          <ImageSwitcher
-            img1={photo}
-            img2={
-              "https://www.bigfootdigital.co.uk/wp-content/uploads/2020/07/image-optimisation-scaled.jpg"
-            }
-          />
+          <ImageSwitcher img1={photo} img2={photo} />
         </StyledItemColumn>
         <StyledItemColumn>
           <StyledSectionHeader>{t("ecosystem.title_2")}</StyledSectionHeader>
@@ -298,20 +294,17 @@ const EcosystemSection = () => {
         <StyledItemColumn style={{ marginBottom: "4rem" }}>
           <StyledSectionHeader>{t("ecosystem.title_4")}</StyledSectionHeader>
           <StyledBodySubText>{t("ecosystem.desc_6")}</StyledBodySubText>
-          <StyledSectionHeader>{t("ecosystem.title_5")}</StyledSectionHeader>
-          {t("ecosystem.tech_1")}
-          <br />
-          {t("37g")}
-          <br />
-          {t("ecosystem.tech_2")}: Cross-compatible
+          <StyledSectionHeader style={{ marginBottom: 0 }}>
+            🇵🇱 Made in Poland
+          </StyledSectionHeader>
+          <div style={{ marginBottom: "1.45rem" }}>
+            {t("ecosystem.title_5")}
+          </div>
+          <div>{t("ecosystem.tech_1")}</div>
+          <div style={{ marginTop: 14 }}>{t("37g")}</div>
         </StyledItemColumn>
         <StyledItemColumn>
-          <ImageSwitcher
-            img1={photo}
-            img2={
-              "https://www.bigfootdigital.co.uk/wp-content/uploads/2020/07/image-optimisation-scaled.jpg"
-            }
-          />
+          <ImageSwitcher img1={photo} img2={photo} />
         </StyledItemColumn>
       </StyledItemRow>
 
@@ -335,7 +328,9 @@ const EcosystemSection = () => {
           {t("setPriceHeader")}
         </StyledSectionHeader>
         {t("setContents")}
-        <StyledSectionHeader>{t("shippingPoland")}</StyledSectionHeader>
+        <StyledSectionHeader style={{ marginBottom: 0 }}>
+          {t("shippingPoland")}
+        </StyledSectionHeader>
         {t("shippingAbroad")}
       </div>
     </StyledSection>
@@ -343,6 +338,7 @@ const EcosystemSection = () => {
 };
 
 const StyledExternalLink = styled.a`
+  font-size: 1.15rem;
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -392,9 +388,9 @@ const ContactSection = ({ language }) => {
     //   );
   };
 
-  useEffect(() => {
-    i18n.changeLanguage(language);
-  }, [language, i18n]);
+  // useEffect(() => {
+  //   i18n.changeLanguage(language);
+  // }, [language, i18n]);
 
   return (
     <StyledSection>
@@ -403,13 +399,9 @@ const ContactSection = ({ language }) => {
           style={{ minWidth: "255px", width: "auto", marginBottom: "2rem" }}
         >
           <StyledBodySubTitle>
-            {t("contact_1")}
-            <br />
-            <StyledExternalLink
-              style={{ fontSize: 18 }}
-              // href={"mailto:contact@web2app.app"}
-            >
-              contact@
+            📬 {t("contact_1")}
+            <StyledExternalLink href={"mailto:contact@243pen.store"}>
+              contact@243pen.store
             </StyledExternalLink>
           </StyledBodySubTitle>
           {t("info")}

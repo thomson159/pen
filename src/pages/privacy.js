@@ -83,7 +83,7 @@ const PrivacyPolicy = (props) => {
         <Paragraph>{t("privacy.44")}</Paragraph>
         <Paragraph>{t("privacy.45")}</Paragraph>
         <Paragraph>{t("privacy.46")}</Paragraph>
-        <Paragraph>{t("privacy.47")} contact@.</Paragraph>
+        <Paragraph>{t("privacy.47")} contact@243pen.store.</Paragraph>
         <Paragraph>{t("privacy.48")}</Paragraph>
         <Paragraph>{t("privacy.49")}</Paragraph>
         <Subtitle>{t("privacy.50")}</Subtitle>
@@ -93,7 +93,7 @@ const PrivacyPolicy = (props) => {
         <Subtitle>{t("privacy.54")}</Subtitle>
         <Paragraph>{t("privacy.55")}</Paragraph>
         <Subtitle>{t("privacy.56")}</Subtitle>
-        <Paragraph>{t("privacy.57")} contact@.</Paragraph>
+        <Paragraph>{t("privacy.57")} contact@243pen.store.</Paragraph>
       </Wrapper>
     </Layout>
   );

@@ -17,6 +17,7 @@ export default function ImageSwitcher({ img1, img2 }) {
         src={showAlt ? img2 : img1}
         $fade={fade}
         key={showAlt ? "img2" : "img1"}
+        alt="Pen Image"
       />
     </Wrapper>
   );

@@ -17,9 +17,9 @@ function SEO({ lang, title, path }) {
   );
 
   const keywordsPL =
-    "długopis z łusek, długopis z łuski kalibru .243, ręcznie robiony długopis, długopis kolekcjonerski, długopis z naboju, personalizowany długopis, unikalny długopis, prezent dla mężczyzny, prezent dla kolekcjonera, premium długopis";
+    "długopis z łusek, długopis z łuski kalibru .243, ręcznie robiony długopis, długopis kolekcjonerski, długopis z naboju, personalizowany długopis, unikalny długopis, prezent dla mężczyzny, prezent dla kolekcjonera, premium długopis, sklep z długopisami";
   const keywordsEN =
-    "shell pen, .243 caliber shell pen, handmade pen, collectible pen, cartridge pen, personalized pen, unique pen, gift for man, gift for collector, premium pen";
+    "shell pen, .243 caliber shell pen, handmade pen, collectible pen, cartridge pen, personalized pen, unique pen, gift for man, gift for collector, premium pen, pen store";
 
   const metaKeywords = lang === "pl" ? keywordsPL : keywordsEN;
 
