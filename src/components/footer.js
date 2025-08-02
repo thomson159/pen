@@ -1,6 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import "../i18n";
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -37,6 +39,8 @@ const StyledFooterLink = styled(Link)`
 `;
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <StyledFooter>
       <StyledFooterLinkSection>
@@ -51,8 +55,7 @@ const Footer = () => {
             }}
             to="/privacy"
           >
-            {/* {t("policy")} */}
-            Policy
+            {t("policy")}
           </StyledFooterLink>
         </StyledFooterSection>
       </StyledFooterLinkSection>

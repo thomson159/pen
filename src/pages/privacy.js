@@ -29,14 +29,15 @@ const Paragraph = styled.p`
 `;
 
 const PrivacyPolicy = (props) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
 
   return (
     <Layout path={props.location.pathname}>
-      <SEO title={t("privacy.1")} path={props.location.pathname} />
+      <SEO title={t("policy")} path={props.location.pathname} lang={lang} />
       <BG />
       <Wrapper>
-        <Title>{t("privacy.1")}</Title>
+        <Title>{t("policy")}</Title>
         <Paragraph>{t("privacy.2")}</Paragraph>
         <Paragraph>{t("privacy.3")}</Paragraph>
         <Subtitle>{t("privacy.4")}</Subtitle>

@@ -91,10 +91,6 @@ const StyledItemColumn = styled.nav`
   width: 100%;
   display: flex;
   flex-direction: column;
-
-  & > *:not(:last-of-type) {
-    margin-bottom: 12px;
-  }
 `;
 
 export const StyledTradeButton = styled.button`
@@ -105,12 +101,13 @@ export const StyledTradeButton = styled.button`
   background-color: #b8860b;
   text-decoration: none;
   color: white;
-  border-radius: 12px;
+  // border-radius: 12px;
   display: inline-block;
   font-weight: 500;
   width: min-content;
   white-space: nowrap;
   border: none;
+  margin-top: 2rem;
 
   box-shadow: ${({ theme }) => theme.shadows.small};
   background: ${({ theme }) => `linear-gradient(
@@ -118,6 +115,8 @@ export const StyledTradeButton = styled.button`
     gray -14.78%,
   #B8860B 110.05%
   )`};
+
+  transition: opacity 0.3s ease;
 
   :hover,
   :focus {
@@ -200,15 +199,12 @@ const StyledInput = styled.input`
 `;
 
 const IndexPage = (props) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
 
   return (
     <Layout path={props.location.pathname}>
-      <SEO
-        title={t("title")}
-        path={props.location.pathname}
-        description={t("slogan")}
-      />
+      <SEO title={t("title")} path={props.location.pathname} lang={lang} />
       <BG />
       <StyledBody>
         <StyledMargin>
@@ -225,7 +221,7 @@ const IndexPage = (props) => {
             <StyledItemColumn></StyledItemColumn>
           </StyledItemRow>
         </StyledMargin>
-        <EcosystemSection language={props.pageContext.language} />
+        <EcosystemSection />
         <StyledItemRow style={{ marginBottom: "4rem" }}>
           <StyledItemColumn>
             <StyledBodySlogan>
@@ -277,7 +273,7 @@ const StyledSection = styled.section`
   margin-bottom: 2.5rem;
 `;
 
-const EcosystemSection = ({ language }) => {
+const EcosystemSection = () => {
   const { t } = useTranslation();
 
   return (
@@ -466,11 +462,7 @@ const ContactSection = ({ language }) => {
               </a>
             </span>
             <br />
-            <StyledTradeButton
-              style={{ marginTop: 18 }}
-              type="submit"
-              disabled={!can}
-            >
+            <StyledTradeButton type="submit" disabled={!can}>
               {t("send")}
             </StyledTradeButton>
           </form>

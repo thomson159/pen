@@ -6,11 +6,11 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Unique Pen`,
-    description: `Symbol of transforming weapons into words`,
+    title: `Premium Bullet Shell Pens – 243Pen.store`,
+    description: `Handcrafted, exclusive pens made from fired bullet casings. A unique blend of craftsmanship, history, and elegance. Perfect as a gift.`,
     author: `@thomson159`,
     menulinks: menu,
-    // siteUrl: ``,
+    siteUrl: `https://243pen.store`,
     repository: `https://github.com/thomson159/pen`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `main`,
   },
@@ -25,12 +25,12 @@ module.exports = {
         name: `locales`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-canonical-urls`,
-    //   options: {
-    //     siteUrl: `https://pen`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://243pen.store`,
+      },
+    },
     {
       resolve: "gatsby-plugin-replace-path",
       options: {
@@ -52,10 +52,8 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    // `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-twitter`,
-    // `gatsby-plugin-instagram-embed`,
     `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-styled-components`,
     `gatsby-background-image`,
@@ -84,14 +82,14 @@ module.exports = {
           {
             resolve: `gatsby-remark-twitter-cards`,
             options: {
-              title: "Unique Pen", // website title
-              separator: "|", // default
-              author: "@thomson159", // twitter handle
+              title: "Premium Bullet Shell Pens – 243Pen.store",
+              separator: "|",
+              author: "@thomson159",
               // background: require.resolve('./static/images/twitter_card.png'), // path to 1200x630px file or hex code, defaults to black (#000000)
-              fontColor: "#663399", // defaults to white (#ffffff)
-              fontStyle: "sans-serif", // default
-              titleFontSize: 124, // default
-              fontFile: require.resolve("./static/fonts/GT-Haptik-Regular.ttf"), // will override fontStyle - path to custom TTF font
+              // fontColor: "#ffffff",
+              fontStyle: "sans-serif",
+              titleFontSize: 124,
+              fontFile: require.resolve("./static/fonts/GT-Haptik-Regular.ttf"),
             },
           },
           `gatsby-remark-smartypants`,
@@ -113,10 +111,10 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        // background_color: `#663399`,
+        // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`,
       },
     },
   ],

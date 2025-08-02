@@ -63,13 +63,22 @@ const StyledLinkBase = `
   }
 `;
 
-const StyledExternalLink = styled(Link)`
+const StyledInternalLink = styled(Link)`
   ${StyledLinkBase}
 `;
 
-const StyledExternalLink2 = styled.a`
+const StyledExternalLink = styled.a`
   ${StyledLinkBase}
 `;
+
+const isExternal = (url) => {
+  try {
+    const linkUrl = new URL(url, window.location.origin);
+    return linkUrl.origin !== window.location.origin;
+  } catch {
+    return false;
+  }
+};
 
 export default function Menu({ data }) {
   const { t } = useTranslation();
@@ -81,16 +90,22 @@ export default function Menu({ data }) {
     });
 
   const content = data.link ? (
-    <StyledExternalLink to={data.link} target={data.target}>
-      {t(data.name)}
-    </StyledExternalLink>
+    isExternal(data.link) ? (
+      <StyledExternalLink href={data.link} target={data.target}>
+        {t(data.name)}
+      </StyledExternalLink>
+    ) : (
+      <StyledInternalLink to={data.link} target={data.target}>
+        {t(data.name)}
+      </StyledInternalLink>
+    )
   ) : (
-    <StyledExternalLink2
+    <StyledExternalLink
       onClick={scrollToBottom}
       style={{ whiteSpace: "nowrap" }}
     >
       {t(data.name)}
-    </StyledExternalLink2>
+    </StyledExternalLink>
   );
 
   return (

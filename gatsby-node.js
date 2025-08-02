@@ -5,6 +5,14 @@ function getSlugPath(slug) {
   return slug.slice(1, slug.length - 1).split("/");
 }
 
+exports.onCreatePage = async ({ page, actions }) => {
+  const { deletePage, createPage } = actions;
+
+  if (page.path === "/dev-404-page/") {
+    deletePage(page);
+  }
+};
+
 exports.onPreInit = () => {
   if (process.argv[2] === "build") {
     const buildPath = path.join(__dirname, "build");
