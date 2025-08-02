@@ -33,7 +33,7 @@ const PrivacyPolicy = (props) => {
   const lang = i18n.language;
 
   return (
-    <Layout path={props.location.pathname}>
+    <Layout>
       <SEO title={t("policy")} path={props.location.pathname} lang={lang} />
       <BG />
       <Wrapper>

@@ -38,7 +38,8 @@ function SEO({ lang, title, path }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | 243Pen.store`}
+      // titleTemplate={`%s | 243Pen.store`}
+      titleTemplate={`%s`}
     >
       <meta charSet="utf-8" />
       <meta name="title" content={title} />

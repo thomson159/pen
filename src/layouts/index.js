@@ -12,10 +12,10 @@ import "../styles/fonts.css";
 
 import "../i18n";
 
-const Layout = ({ path, children, nofooter }) => {
+const Layout = ({ children, nofooter }) => {
   return (
     <StyledThemeProvider>
-      <Header path={path} siteTitle="Unique Pen" />
+      <Header />
       <Mdx>{children}</Mdx>
       {nofooter ? null : <Footer />}
     </StyledThemeProvider>

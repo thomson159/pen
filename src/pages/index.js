@@ -110,7 +110,7 @@ export const StyledTradeButton = styled.button`
   margin-top: 2rem;
 
   box-shadow: ${({ theme }) => theme.shadows.small};
-  background: ${({ theme }) => `linear-gradient(
+  background: ${({}) => `linear-gradient(
     128.17deg,
     gray -14.78%,
   #B8860B 110.05%
@@ -203,7 +203,7 @@ const IndexPage = (props) => {
   const lang = i18n.language;
 
   return (
-    <Layout path={props.location.pathname}>
+    <Layout>
       <SEO title={t("title")} path={props.location.pathname} lang={lang} />
       <BG />
       <StyledBody>
@@ -278,15 +278,6 @@ const EcosystemSection = () => {
 
   return (
     <StyledSection>
-      {/* <StyledItemRow>
-        <StyledItemColumn>
-          <StyledSectionImageRight src={photo} alt="Photo 1" />
-        </StyledItemColumn>
-        <StyledItemColumn>
-          <StyledSectionHeader>{t("ecosystem.title_1")}</StyledSectionHeader>
-          <StyledBodySubText>{t("ecosystem.desc_3")}</StyledBodySubText>
-        </StyledItemColumn>
-      </StyledItemRow> */}
       <StyledItemRow>
         <StyledItemColumn>
           <ImageSwitcher
