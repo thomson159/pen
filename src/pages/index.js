@@ -308,14 +308,14 @@ const EcosystemSection = () => {
         <StyledItemColumn>
           <ImageSwitcher
             images={[
-              { src: photo1, title: t("row") },
+              // { src: photo1, title: t("row") },
               { src: photo2, title: t("polished") },
             ]}
           />
         </StyledItemColumn>
         <StyledItemColumn>
-          <StyledSectionHeader>{t("ecosystem.title_2")}</StyledSectionHeader>
-          <StyledBodySubText>{t("ecosystem.desc_4")}</StyledBodySubText>
+          {/* <StyledSectionHeader>{t("ecosystem.title_2")}</StyledSectionHeader> */}
+          {/* <StyledBodySubText>{t("ecosystem.desc_4")}</StyledBodySubText> */}
           <StyledSectionHeader>{t("ecosystem.title_3")}</StyledSectionHeader>
           <StyledBodySubText>{t("ecosystem.desc_5")}</StyledBodySubText>
         </StyledItemColumn>

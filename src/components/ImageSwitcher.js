@@ -13,11 +13,11 @@ export default function ImageSwitcher({ images }) {
 
   return (
     <Wrapper onClick={handleClick}>
-      <Title>{images[index].title}</Title>
+      {/* <Title>{images[index].title}</Title> */}
       {images.map((img, i) => (
         <Image key={i} src={img.src} alt={img.title} visible={i === index} />
       ))}
-      <Hint>{t("clickPhoto")}</Hint>
+      {/* <Hint>{t("clickPhoto")}</Hint> */}
     </Wrapper>
   );
 }

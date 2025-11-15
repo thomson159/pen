@@ -10,3 +10,7 @@ public_dev
 .cache
 public
 .env
+.env.development
+.env.production
+.vscode
+.DS_Store   
